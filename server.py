@@ -8,19 +8,19 @@ app.secret_key = 'super secret key'
 def index():
 	return render_template('index.html')
 
-@app.route('/guess', methods=['GET'])
+@app.route('/guess', methods=['POST'])
 def guess_number():
 	guess = request.form['number']
 	if session.get('number') is None:
-        session['number'] = random.randrange(0, 101)
-	if session['number'] == guess:
-		return render_template('answer.html')
-	elif session['number'] < guess:
-		return render_template('too_low.html')
+       	 session['number'] = random.randrange(0, 101)
+	if session.get('number') == guess:
+		 return render_template('answer.html')
+	elif session.get('number') < guess:
+		 return render_template('too_low.html')
 	else:
-		return render_template('too_high.html')
+		 return render_template('too_high.html')
 
-@app.route('/reset', methods=['GET'])
+@app.route('/reset', methods=['POST'])
 def reset():
 	session.pop('number')
 	return redirect('/')
