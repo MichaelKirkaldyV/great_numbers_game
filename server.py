@@ -11,11 +11,11 @@ def index():
 def guess_number():
 	rand_num = random.randrange(0, 101)
 	if session.get('number') == rand_num:
-		return redirect('answer.html')
+		return render_template('answer.html')
 	elif session.get('number') <= 50:
-		return redirect('too_low.html')
+		return render_template('too_low.html')
 	else:
-		return redirect('too_high.html')
+		return render_template('too_high.html')
 
 @app.route('/reset', methods=['GET'])
 def reset():
