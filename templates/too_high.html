@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Great Numbers Game</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/too_high.css')}}">
+</head>
+<body>
+	<h1>Welcome to the Great Numbers Game!</h1>
+	<h2>I am thinking of a number between 1 and 100</h2>
+	<h3>Take a guess..!</h3>
+	<form action="/guess" method="get">
+		<input type="text" name="number">
+		<input type="button" name="submit" value="Submit" class="submit">
+	</form>
+	<div>
+		<h3>The number was too high!</h3>
+	</div>
+</body>
+</html>
