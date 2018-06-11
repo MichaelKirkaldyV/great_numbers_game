@@ -10,11 +10,12 @@ def index():
 
 @app.route('/guess', methods=['GET'])
 def guess_number():
-	session['number'] = session.get('number')
-	rand_num = random.randrange(0, 101)
-	if session['number'] == rand_num:
+	guess = request.form['number']
+	if session.get('number') is None:
+        session['number'] = random.randrange(0, 101)
+	if session['number'] == guess:
 		return render_template('answer.html')
-	elif session['number'] < rand_num:
+	elif session['number'] < guess:
 		return render_template('too_low.html')
 	else:
 		return render_template('too_high.html')
